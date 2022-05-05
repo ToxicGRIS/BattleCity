@@ -8,10 +8,12 @@ public class Field : MonoBehaviour
 
 	[SerializeField] private Vector2Int size;
 	[SerializeField] private GameObject wall;
+	[SerializeField] private GameObject allyBase;
 	[SerializeField] private GameObject cell;
 	[SerializeField] private GameObject border;
 	[SerializeField] private GameObject player;
 	[SerializeField] private GameObject[] cells;
+	[SerializeField] private Score score;
 	[SerializeField] [Range(0, 1)] float wallSpawnChance;
 
 	#endregion
@@ -50,17 +52,23 @@ public class Field : MonoBehaviour
 				if (currentCell.Type == CellType.Border)
 				{
 					Instantiate(border, cells[i + j * size.x].transform);
-					cells[i + j * size.x].GetComponent<Cell>().Type = CellType.Border;
 				}
 				if (currentCell.Type == CellType.Wall)
 				{
 					Instantiate(wall, cells[i + j * size.x].transform);
-					cells[i + j * size.x].GetComponent<Cell>().Type = CellType.Wall;
+				}
+				if (currentCell.Type == CellType.AllyBase)
+				{
+					Instantiate(allyBase, cells[i + j * size.x].transform);
 				}
 				if (currentCell.Type == CellType.SpawnPoint)
 				{
-					Instantiate(player, cells[i + j * size.x].transform.position, player.transform.rotation);
-					cells[i + j * size.x].GetComponent<Cell>().Type = CellType.Wall;
+					player.transform.position =  cells[i + j * size.x].transform.position;
+					player.SetActive(true);
+				}
+				if (currentCell.Type == CellType.EnemyBase)
+				{
+					score.AddEnemyBase(cells[i + j * size.x]);
 				}
 				if (currentCell.Type == CellType.Neutral)
 				{

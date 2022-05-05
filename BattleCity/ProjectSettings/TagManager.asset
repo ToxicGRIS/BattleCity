@@ -14,10 +14,10 @@ TagManager:
   - 
   - 
   - EditorSelection
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Bonus
+  - Bullet
+  - Player
   - 
   - 
   - 

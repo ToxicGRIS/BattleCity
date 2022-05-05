@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class Base : MonoBehaviour, IShotable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int health = 3;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Health { get => health; set { health = value; if (health <= 0) Score.EndGame(); } }
+
+    public void GotShot(Bullet bullet)
+	{
+        Health -= 1;
+	}
 }

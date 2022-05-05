@@ -21,8 +21,8 @@ public class Bullet : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.transform != transform.parent.parent)
+		collision.gameObject.GetComponent<IShotable>()?.GotShot(this);
+		if (collision.gameObject.GetComponent<IShotable>() != null)
 			Destroy(gameObject);
-		if (collision.gameObject.GetComponent<Wall>() != null) Destroy(collision.gameObject);
 	}
 }

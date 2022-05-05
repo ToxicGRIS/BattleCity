@@ -31,6 +31,8 @@ public class Cell : MonoBehaviour
 			Gizmos.color = new Color(1f, 0f, 0f, 0.2f);
 		if (type == CellType.Wall)
 			Gizmos.color = new Color(0.82f, 0.41f, 0.11f, 0.2f);
+		if (type == CellType.SpawnPoint)
+			Gizmos.color = new Color(0.8f, 0.8f, 0.8f, 0.2f);
 		Gizmos.DrawCube(transform.position, Vector3.one); 
 	}
 	private void OnDrawGizmosSelected()

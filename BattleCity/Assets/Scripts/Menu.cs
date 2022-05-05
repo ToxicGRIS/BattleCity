@@ -21,7 +21,7 @@ public class Menu : MonoBehaviour
 	{
 		master.audioMixer.GetFloat("MasterVolume", out volume);
 		muteToggle.isOn = volume < -79f;
-		record.text = $"RECORD: {PlayerPrefs.GetInt("Record")}";
+		record.text = $"RECORD: {PlayerPrefs.GetInt("TanksRecord")}";
 	}
 
 	#endregion
